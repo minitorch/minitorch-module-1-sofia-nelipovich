@@ -179,7 +179,7 @@ class Exp(ScalarFunction):
     @staticmethod
     def backward(ctx: Context, d_output: float) -> float:
         (a,) = ctx.saved_values
-        return operators.mul(d_output, a)
+        return operators.mul(d_output, operators.exp(a))
 
 
 class LT(ScalarFunction):
