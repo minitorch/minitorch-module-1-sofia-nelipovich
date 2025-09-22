@@ -355,7 +355,7 @@ def sum_list(xs: Iterable[float]) -> float:
     Returns:
         float: Sum of all elements in the list.
     """
-    return reduce_fn(add, xs, 0.0)
+    return float(reduce_fn(add, xs, 0.0))
 
 
 def prod(xs: Iterable[float]) -> float:
@@ -368,5 +368,5 @@ def prod(xs: Iterable[float]) -> float:
     Returns:
         float: Product of all elements.
     """
-    return reduce_fn(mul, xs, 1.0)
+    return float(reduce_fn(mul, xs, 1.0))
 

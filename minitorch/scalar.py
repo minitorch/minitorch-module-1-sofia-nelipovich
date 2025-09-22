@@ -78,13 +78,13 @@ class Scalar:
             self.name = name
         else:
             self.name = str(self.unique_id)
-    def __hash__(self):
+    def __hash__(self) -> int:
         return hash(self.unique_id)
 
-    def __eq__(self, other):
-        if not isinstance(other, Scalar):
-            return False
-        return self.unique_id == other.unique_id
+    # def __eq__(self, other) -> bool:
+    #     if not isinstance(other, Scalar):
+    #         return False
+    #     return self.unique_id == other.unique_id
 
     def __repr__(self) -> str:
         return "Scalar(%f)" % self.data
@@ -171,7 +171,7 @@ class Scalar:
         assert h.ctx is not None
 
         # Backward should return as many gradients as there are input variables
-        grads = h.last_fn.backward(h.ctx, d_output)
+        grads = h.last_fn._backward(h.ctx, d_output)
         # grads can be a single value or a tuple/list (if multiple inputs)
         # Make sure it's always a tuple/list to easily zip
         if not isinstance(grads, tuple) and not isinstance(grads, list):
